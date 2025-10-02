@@ -35,7 +35,7 @@
 - **Algorithms**: Dijkstra’s Algorithm, BFS
 - **Data Structures**: Graphs (Adjacency List), Priority Queues, Hash Maps  
 - **Build Tools**: CMake, GCC/Clang/MSVC  
-- **Dataset**: [OpenFlights](https://openflights.org/data.html) – Airports (7698), Routes (67663)  
+- **Dataset**: Airports (7698), Routes (67663)  
 
 ---
 
@@ -130,3 +130,4 @@ Ritvika
 [GitHub Profile](https://github.com/Kritvi0208)
 
 ```
+
