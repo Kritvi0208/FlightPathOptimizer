@@ -1,77 +1,132 @@
-# Flight Route Optimization Tool
+# Flight Route Optimizer Tool
 
 ## Overview
 
-The Flight Route Optimization Tool is a C++ application designed to find the most efficient routes between airports using Dijkstra's algorithm. This tool allows users to minimize travel time, cost, or both, and handle layovers effectively.
+ A **C++ backend project** that computes the most efficient flight paths between airports using advanced **Graph Algorithms** such as **Dijkstra’s Algorithm** & **BFS**.
 
-## Features
+**FlightPathOptimizer** leverages graph theory on large, real-world aviation datasets. It treats airports as **nodes** and flight routes as weighted **edges** (where the weight is the distance in kilometers). The tool is designed for performance and scalability, successfully modeling:
 
-- **Graph Representation**: Uses an adjacency list to represent airports and routes.
-- **Dijkstra's Algorithm**: Computes the shortest path based on time, cost, or stops.
-- **Dynamic Data Loading**: Loads airport and route data from CSV files.
-- **GUI Integration**: Designed for future integration with a graphical user interface (GUI).
+* **7500+** Airports Loaded
+* **65000+** Routes Loaded
+---
 
-## Installation
+##  Features  
 
-### Prerequisites
+- **Shortest Path Finder:**  
+  - Computes the most efficient route between two airports using **Dijkstra’s Algorithm**.  
+  - Returns both **total distance** and **minimum number of hops (stops)**.  
 
-- **C++ Compiler**: Ensure you have a C++ compiler installed (e.g., GCC, Clang).
-- **CMake**: Required for building the project.
+- **Airport Lookup & Statistics:**  
+  - Query airport details instantly by **IATA code** (e.g., `DEL`, `LAX`).  
+  - Identifies the **Top 5 busiest airports worldwide** based on route volume and connectivity.  
 
-### Steps
+- **Interactive CLI:**  
+  - A **user-friendly, menu-driven console interface** for smooth navigation.  
+  - Step-by-step guidance for shortest path queries, airport lookups, and network statistics.  
 
-1. **Clone the Repository**
+- **Performance & Scalability:**  
+  - Optimized to handle large-scale aviation datasets with **7,700+ airports** and **67,000+ routes**.  
+  - Delivers near-instantaneous query results even with thousands of nodes and edges.  
+---
 
-   ```sh
-   git clone https://github.com/Satyam-k-jha/flight-Route-Optimization.git
-   cd flight-Route-Optimization
-   ```
+## Tech Stack
 
-2. **Prepare the Data Files**
+- **Language**: C++17  
+- **Algorithms**: Dijkstra’s Algorithm, BFS
+- **Data Structures**: Graphs (Adjacency List), Priority Queues, Hash Maps  
+- **Build Tools**: CMake, GCC/Clang/MSVC  
+- **Dataset**: [OpenFlights](https://openflights.org/data.html) – Airports (7698), Routes (67663)  
 
-   Place your `airports.dat` and `routes.dat` files in the `data/` directory. Ensure that the data files follow the correct format.
+---
 
-3. **Build the Project**
+##  System Architecture
 
-   ```sh
-   mkdir build
-   cd build
-   cmake ..
-   make
-   ```
+```mermaid
+flowchart TD
+    A[Airports Dataset] --> B[Graph Loader]
+    A2[Routes Dataset] --> B
+    B --> C[Graph Representation]
+    C --> D[Algorithms: Dijkstra / BFS]
+    D --> E[Results: Optimal Path, Distance, Hops, Statistics]
 
-4. **Run the Application**
+```
 
-   ```sh
-   ./flightRouteOptimization
-   ```
+---
 
-## Usage
+## Example Results
 
-- **Loading Data**: The application reads `airports.dat` and `routes.dat` from the `data/` directory.
-- **Finding Routes**: Test different routes by modifying the source code or future GUI components.
+| Source | Destination | Optimal Path                          | Distance (km) | Hops |
+|--------|-------------|----------------------------------------|---------------|------|
+| DEL    | ORD         | DEL → ORD                             | 12021.28      | 1    |
+| DEL    | LAX         | DEL → PEK → LAX                       | 13846.07      | 2    |
+| ATL    | DEL         | ATL → YYZ → LHE → DEL                 | 12856.37      | 3    |
+
 
 ## Project Structure
+```makefile
+FlightPathOptimizer/
+│── include/            # Header files (Graph, Airport, Route)
+│── src/                # Implementations (Graph.cpp, Airport.cpp, Route.cpp, main.cpp)
+│── data/               # Input datasets (airports.dat, routes.dat)
+│── CMakeLists.txt      # Build configuration
+│── README.md           # Documentation
 
-- `src/` - Contains the source code files.
-- `data/` - Data files used for the application (e.g., `airports.dat`, `routes.dat`).
-- `CMakeLists.txt` - CMake build configuration file.
-- `README.md` - This file.
+```
+---
+## Installation  
 
-## Contributing
+### Prerequisites  
+- **C++ Compiler:** Ensure you have a C++ compiler installed (e.g., GCC, Clang).
+- **CMake:** Required for building the project.
+---
 
-If you would like to contribute to this project, please follow these steps:
+### Steps  
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
+#### 1. Clone the Repository  
+```powershell
+git clone https://github.com/Kritvi0208/FlightPathOptimizer.git
+cd FlightPathOptimizer
+````
 
-## License
+#### 2. Prepare the Data Files
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+* Place your `airports.dat` and `routes.dat` files inside the `data/` directory.
+* Ensure the files follow the correct format.
 
-## Contact
+#### 3. Build the Project
 
-For any inquiries or feedback, please contact [Satyam-k-jha](mailto:your-email@example.com).
+```powershell
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
+#### 4. Run the Application
+
+```powershell
+.\Debug\flightPathOptimizer.exe
+```
+---
+
+## Usage  
+
+1. **Loading Data** – The application automatically reads `airports.dat` and `routes.dat` from the `data/` directory.  
+2. **Finding Routes** – Use the interactive CLI to compute the shortest paths between airports, showing both distance and number of hops.  
+3. **Airport Insights** – Quickly lookup airports by IATA code and explore network statistics like the Top 5 busiest airports.  
+---
+
+## Future Enhancements
+
+- Time-based optimization (flight duration, layovers)
+- Cost-based optimization (ticket prices)
+- Visualization of computed routes via GUI or web map
+- Real-time flight data integration through APIs
+- REST API conversion for integration with travel & logistics systems
+---
+## Author
+
+Ritvika
+[GitHub Profile](https://github.com/Kritvi0208)
+
+```
