@@ -1,0 +1,10 @@
+^C:\USERS\KAYRI\ONEDRIVE - IIT BHU\DESKTOP\FLIGHT-ROUTE-OPTIMIZATION\BUILD\CMAKEFILES\C8F60CAF1F53539C925B35959E749622\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/kayri/OneDrive - IIT BHU/Desktop/flight-Route-Optimization" "-BC:/Users/kayri/OneDrive - IIT BHU/Desktop/flight-Route-Optimization/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/kayri/OneDrive - IIT BHU/Desktop/flight-Route-Optimization/build/flightRouteOptimization.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

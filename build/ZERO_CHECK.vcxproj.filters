@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\kayri\OneDrive - IIT BHU\Desktop\flight-Route-Optimization\build\CMakeFiles\c8f60caf1f53539c925b35959e749622\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{3E5EB200-BD91-3710-8F69-CC455077999D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
