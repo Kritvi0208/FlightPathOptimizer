@@ -39,15 +39,34 @@
 
 ---
 
-##  System Architecture
+## System Architecture
 
 ```mermaid
+
 flowchart TD
     A[Airports Dataset] --> B[Graph Loader]
-    A2[Routes Dataset] --> B
-    B --> C[Graph Representation]
-    C --> D[Algorithms: Dijkstra / BFS]
-    D --> E[Results: Optimal Path, Distance, Hops, Statistics]
+    C[Routes Dataset] --> B
+    B --> D[Graph Builder - Adjacency List]
+    D --> E[Computation Engine]
+    E --> F[Algorithms: Dijkstra and BFS]
+    F --> G[Airport Analyzer - Top 5 Busiest]
+    E --> H[Interactive CLI]
+    H --> I[Display Results - Path, Distance, Hops, Stats]
+
+```
+
+---
+
+## Data Flow (File Upload Process)
+
+```mermaid
+
+flowchart LR
+    A[Airports Dataset] --> B[Graph Loader]
+    C[Routes Dataset] --> B
+    B --> D[Graph Representation]
+    D --> E[Algorithms: Dijkstra & BFS]
+    E --> F[Results: Path, Distance, Hops, Stats]
 
 ```
 
@@ -61,6 +80,7 @@ flowchart TD
 | DEL    | LAX         | DEL → PEK → LAX                       | 13846.07      | 2    |
 | ATL    | DEL         | ATL → YYZ → LHE → DEL                 | 12856.37      | 3    |
 
+---
 
 ## Project Structure
 ```makefile
@@ -123,11 +143,4 @@ cmake --build .
 - Visualization of computed routes via GUI or web map
 - Real-time flight data integration through APIs
 - REST API conversion for integration with travel & logistics systems
----
-## Author
-
-Ritvika
-[GitHub Profile](https://github.com/Kritvi0208)
-
-```
 
