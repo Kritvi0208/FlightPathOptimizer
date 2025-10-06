@@ -42,19 +42,61 @@
 ## System Architecture
 
 ```mermaid
-
 flowchart TD
-    A[Airports Dataset] --> B[Graph Loader]
-    C[Routes Dataset] --> B
-    B --> D[Graph Builder - Adjacency List]
-    D --> E[Computation Engine]
-    E --> F[Algorithms: Dijkstra and BFS]
-    F --> G[Airport Analyzer - Top 5 Busiest]
-    E --> H[Interactive CLI]
-    H --> I[Display Results - Path, Distance, Hops, Stats]
+    subgraph Input_Data
+        A1["airports.dat (Airport Info)"]
+        A2["routes.dat (Route Connections)"]
+    end
 
+    subgraph Graph_Initialization
+        B1["Graph Loader - Parses & Validates Data"]
+        B2["Build Adjacency List - Airport to Connected Routes"]
+    end
+
+    subgraph Computation_Engine
+        C1["Dijkstra's Algorithm - Shortest Path"]
+        C2["BFS - Connectivity Check"]
+        C3["Analyzer - Top 5 Busiest Airports"]
+    end
+
+    subgraph CLI_Interface
+        D1["User Input: Source & Destination"]
+        D2["Route Query Handler"]
+        D3["Display Results: Path, Distance, Hops, Stats"]
+    end
+
+    subgraph Output_Results
+        E1["Optimal Route Path"]
+        E2["Total Distance (km)"]
+        E3["Number of Hops"]
+        E4["Top 5 Busiest Airports"]
+    end
+
+    A1 --> B1
+    A2 --> B1
+    B1 --> B2
+    B2 --> C1
+    B2 --> C2
+    B2 --> C3
+    D1 --> D2
+    D2 --> C1
+    C1 --> D3
+    C2 --> D3
+    C3 --> D3
+    D3 --> E1
+    D3 --> E2
+    D3 --> E3
+    D3 --> E4
 ```
 
+**Explanation**
+
+- Loads airport and route data.
+- Builds a graph connecting airports.
+- Runs Dijkstra for shortest paths, BFS for connectivity, and stats analyzer.
+- Takes user input (source & destination).
+- Displays optimal route, distance, hops, and busiest airports.
+  
 ---
 
 ## Data Flow (File Upload Process)
@@ -69,6 +111,9 @@ flowchart LR
     E --> F[Results: Path, Distance, Hops, Stats]
 
 ```
+
+- Takes raw datasets, loads them into a graph structure, and executes algorithms.
+- Outputs optimized path, distance, hops, and busiest airport stats.
 
 ---
 
@@ -143,4 +188,5 @@ cmake --build .
 - Visualization of computed routes via GUI or web map
 - Real-time flight data integration through APIs
 - REST API conversion for integration with travel & logistics systems
+
 
